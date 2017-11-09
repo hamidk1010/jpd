@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="jahan_product_template_form_view">
+        <field name="name">jahan.product.template.product.website.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+   
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="HTML">
+				
+                     <field name="website_description"/>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    
+</odoo>

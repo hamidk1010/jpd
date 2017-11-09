@@ -10,9 +10,10 @@
         """
 
         """,
-    #'depends': ['website'],
+    'depends': ['website_sale'],
     'auto_install': False,
     'data': [
         'views/templates.xml',
+        'views/views.xml',
     ],
 }
