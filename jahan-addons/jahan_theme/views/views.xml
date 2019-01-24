@@ -9,9 +9,8 @@
    
             <xpath expr="//notebook[last()]" position="inside">
                 <page string="HTML">
-				
-                     <field name="website_description"/>
-
+		            <field name="website_description"/>
+		            <field name="website_description_fa"/>
                 </page>
             </xpath>
         </field>

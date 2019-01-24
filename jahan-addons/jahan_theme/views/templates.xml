@@ -1,75 +1,850 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <odoo>
-    <data>
-        
-		
-		<!-- Meta Tag Template -->
-		<template id="jahan_meta" inherit_id="website.layout">
-		  <xpath expr="//meta[@name='generator']" position="replace">
-			<meta name="generator" content="Jahanpodr"/>
-		  </xpath>
-		  <xpath expr="//meta[last()]" position="after">
-			<meta name="google-site-verification" content="dIRR-WOvmEz7fdmU5nQ8TnEidk5hi9kprIFHbrchfE8" />
-			<!--<meta name="samandehi" content=""/>-->
-		  </xpath>
-		</template>
-		
-		<template id="assets_frontend" inherit_id="web.assets_frontend" name="Website Frontend Assets">
+	<template id="assets_frontend" inherit_id="web.assets_frontend" name="Website Frontend Assets">
             <xpath expr="//link[last()]" position="after">
                 <!--<link rel="stylesheet" type="text/css" href="/website_rtl/static/src/css/website_rtl.css"/>-->
                 <link rel="stylesheet" type="text/css" href="/jahan_theme/static/src/css/layout.css"/>
             
 			</xpath>
         </template>
+	
+	<template id="jahan_header" inherit_id="website.layout" >
+        <xpath expr="//header//div[@class='navbar-header']" position="after">
+            
+            <t t-call="website.language_selector"/>
+			
+        </xpath>
+    </template>
+	
+	<!--
+	توليدكننده انواع پودر و مواد ميكرونيزه معدنی و صنعتی، جهان پودر دليجان
+	توليدكننده انواع مواد ميكرونيزه معدنی وصنعتی: اخرا،میکروسیلیکا،تونسیل،سیلیس،كائولن،بالکلی،فلورین،دولومیت،گوگرد،میکا،فلدسپات، اكسيدآلومينيوم،ورمیکولیت،بنتونیت و
+	-->
+	<template id="website.jahan_homepage" name="Jahan Homepage">
+		<t t-call="website.layout">
+
+
+<script>
+
+$(document).ready(function() {    
+    //Events that reset and restart the timer animation when the slides change
+    $("#transition-timer-carousel").on("slide.bs.carousel", function(event) {
+        //The animate class gets removed so that it jumps straight back to 0%
+        $(".transition-timer-carousel-progress-bar", this)
+            .removeClass("animate").css("width", "0%");
+    }).on("slid.bs.carousel", function(event) {
+        //The slide transition finished, so re-add the animate class so that
+        //the timer bar takes time to fill up
+        $(".transition-timer-carousel-progress-bar", this)
+            .addClass("animate").css("width", "100%");
+    });
+    
+    //Kick off the initial slide animation when the document is ready
+    $(".transition-timer-carousel-progress-bar", "#transition-timer-carousel")
+        .css("width", "100%");
+});
+</script>
 		
 		
+			<div id="wrap" class="oe_structure oe_empty">
+			
+			<t t-if="lang_direction == 'rtl'">
+				<section>
+				<div class="container-fluid">
+    
+					<div class="row">
+						<!-- The carousel -->
+						<div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="2"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="3"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="4"></li>
+							</ol>
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/jahan_theme/static/src/img/1.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								<div class="item">
+									<img src="/jahan_theme/static/src/img/2.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs"  style="text-align:right">
+										كليه محصولات در بسته‌بندي پاكتي كرافت و در كيسه‌هاي پروپلين بسته‌بندي مي‌گردد و مطابق درخواست مشتري پالت شرينگ نيز خواهد شد. 
+				.ضمناً از جمبوبگ‌هاي نوع درجه يك كره‌اي و ممتاز ايراني جهت بسته‌بندي استفاده مي‌گردد
+
+										</p>
+									</div>
+								</div>
+								
+								<div class="item">
+									<img src="/jahan_theme/static/src/img/3.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								 <div class="item">
+									<img src="/jahan_theme/static/src/img/4.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								 <div class="item">
+									<img src="/jahan_theme/static/src/img/5.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+							</div>
+
+							<!-- Controls -->
+							<a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+							<a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+								<i class="fa fa-chevron-right"></i>
+							</a>
+							
+							<!-- Timer "progress bar" -->
+							<hr class="transition-timer-carousel-progress-bar animate" />
+						</div>
+					</div>
+			</div>
+								
+			   </section>
+				
+				
+			    <section class="s_features">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
+					  <div class="serviceBox">
+						<div class="service-icon">
+						  <span>
+							<i class="fa "/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">تولید<br/></h3>
+						  <p class="description">توليد خالص ترين مواد معدنی با بالاترين استانداردهاى پايدارى و زيست محيطی<br/></p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
+					  <div class="serviceBox green">
+						<div class="service-icon">
+						  <span/>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">زنجیره تامین<br/></h3>
+						  <p class="description">تامين منابع، برنامه ريزى، مديريت موجودى و ارتباط با&amp;nbsp; مشتريان با بهره گيرى از راهكارهاى كيفی و هزينه متناسب</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
+					  <div class="serviceBox orange">
+						<div class="service-icon">
+						  <span>
+							<i class="fa "/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">تحقیق و توسعه<br/></h3>
+						  <p class="description">نياز به پيش بينی چالشهاى امروز و آينده با در نظر گرفتن تغييرات چشمگير به وجود آمده در صنايع</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
+					  <div class="serviceBox blue">
+						<div class="service-icon">
+						  <span>
+							<i class="fa"/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">خدمات فنی و نوآوری<br/></h3>
+						  <p class="description">ارائه راه حل متناسب با نياز مشتريان با بهره گيرى از كارشناسان متعدد، نوآورى ها و خدمات فنی پايدار</p>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </section>
+			   
+	   <section style="background-color:#F8F8F8">
+				<div class="container text-center ">
+				  <h2>محصولات<br/></h2>
+				  
+				  
+				<div class="row text-center">
+					<div class="col-sm-4">
+					  <a href="/fa_IR/shop/product/9">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/9/image/200x200?unique=817d6b5" alt="فلورین"/>
+							<p>
+							  <strong>فلورین </strong>
+							</p>
+							<p> </p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+						<a href="/fa_IR/shop/product/17">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/17/image/200x200?unique=b231af9" alt="متاكائولن"/>
+							<p>
+							  <strong>متاكائولن</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+					    <a href="/fa_IR/shop/product/6">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/6/image/200x200?unique=116d72b" alt="فلدسپات"/>
+							<p>
+							  <strong>فلدسپات</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+				  </div>
+				  
+				  
+				<div class="row text-center">
+					<div class="col-sm-4">
+					  <a href="/fa_IR/shop/product/13">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/13/image/200x200?unique=817d6b5" alt="كائولن"/>
+							<p>
+							  <strong>كائولن</strong>
+							</p>
+							<p> </p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+						<a href="/fa_IR/shop/product/3">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/3/image/200x200?unique=b231af9" alt="میکروسیلیکا"/>
+							<p>
+							  <strong>میکروسیلیکا</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+					    <a href="/fa_IR/shop/product/12">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/12/image/200x200?unique=116d72b" alt="آهك"/>
+							<p>
+							  <strong>آهك</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+				  </div>
+				  
+				
+				  
+				  
+				  
+				  
+				  <span style="float: left;color: gray;font-size: 12px;cursor: pointer;"> <a href="/fa_IR/shop"> سایر محصولات</a></span>
+				</div>
+			  </section>
+
+
+			   <section class="s_features" >
+				<div class="container">
+				  <h3 style="text-align:center;border-bottom:none;padding-bottom: 20px;">برخی از مشتریان</h3>
+				  <div class="row mt16 mb16">
+					
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/iranzob.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/azarakh.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/barez.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/cust.jpg" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/cust3.ico" style="width: 80px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						<div class="col-md-2 text-center">
+						  <img src="/jahan_theme/static/src/img/customer/cust1.png" style="width: 150px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						
+						
+					</div>
+				<div class="row mt16 mb16">	
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/cust2.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/electrod.jpg" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/PhotoBox.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/summit.png" style="width: 100px;background-color: gray;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<!--<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/rock.png" style="width: 200px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>-->
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/norin-mika.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					
+					
+					
+					
+					
+				  </div>
+				</div>
+			  </section>
+				
+				<section class="parallax s_parallax oe_img_bg" style="height:250px;background-image: none;" data-scroll-background-ratio="1.6"><span class="s_parallax_bg" style='background-image: url("/jahan_theme/static/src/img/jahan-rock-tree-care.jpg"); top: -44.96px; bottom: -44.96px; transform: translateY(-2px);'><h3 style="color: white;text-align: right;color: white;padding-right: 100px;padding-top: 150px;">حفظ محیط زیست با محصولات جهان پودر</h3></span></section>
+			
+			</t>
+			
+			<t t-if="lang_direction == 'ltr'">
+				<section>
+				 	<div class="container-fluid">
+    
+					<div class="row">
+						<!-- The carousel -->
+						<div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="2"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="3"></li>
+								<li data-target="#transition-timer-carousel" data-slide-to="4"></li>
+							</ol>
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="/jahan_theme/static/src/img/1.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								<div class="item">
+									<img src="/jahan_theme/static/src/img/2.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs" >
+									All products are packed in Kraft and Propylene bags and will be shiring according to the customer's request. In addition, the Iranian privileged and Korean first grade Jumbo bags are used for packing.
+
+										</p>
+									</div>
+								</div>
+								
+								<div class="item">
+									<img src="/jahan_theme/static/src/img/3.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								 <div class="item">
+									<img src="/jahan_theme/static/src/img/4.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+								 <div class="item">
+									<img src="/jahan_theme/static/src/img/5.jpg" />
+									<div class="carousel-caption">
+										<h1 class="carousel-caption-header"></h1>
+										<p class="carousel-caption-text hidden-sm hidden-xs">
+										</p>
+									</div>
+								</div>
+								
+							</div>
+
+							<!-- Controls -->
+							<a class="left carousel-control" href="#transition-timer-carousel" data-slide="prev">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+							<a class="right carousel-control" href="#transition-timer-carousel" data-slide="next">
+								<i class="fa fa-chevron-right"></i>
+							</a>
+							
+							<!-- Timer "progress bar" -->
+							<hr class="transition-timer-carousel-progress-bar animate" />
+						</div>
+					</div>
+			</div>
+								
+
+
+			   </section>
+			    <section class="s_features">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-left">
+					  <div class="serviceBox">
+						<div class="service-icon">
+						  <span>
+							<i class="fa "/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">Production <br/></h3>
+						  <p class="description">Production of the purest minerals with the highest standards of sustainability and environmental protection</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-left">
+					  <div class="serviceBox green">
+						<div class="service-icon">
+						  <span/>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">Supply Chain<br/></h3>
+						  <p class="description">Provision of resources, planning, inventory management and customer relationship by utilizing qualitative and cost-effective solutions</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-left">
+					  <div class="serviceBox orange">
+						<div class="service-icon">
+						  <span>
+							<i class="fa "/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">Research and Development<br/></h3>
+						  <p class="description"> The need to anticipate the challenges of today and the future, taking into account the dramatic changes that have taken place in the industries</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xsx-6 pull-left">
+					  <div class="serviceBox blue">
+						<div class="service-icon">
+						  <span>
+							<i class="fa"/>
+						  </span>
+						</div>
+						<div class="service-content">
+						  <h3 class="title">Technical Services and Innovation<br/></h3>
+						  <p class="description">Providing a solution tailored to the needs of customers by employing a variety of experts, innovations and sustainable technical services</p>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </section>
+			  
+			     <section style="background-color:#F8F8F8">
+				<div class="container text-center ">
+				  <h2>Products<br/></h2>
+				  
+				  
+				<div class="row text-center">
+					<div class="col-sm-4">
+					  <a href="/shop/product/fluorine-9">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/9/image/200x200?unique=817d6b5" alt="Fluorine"/>
+							<p>
+							  <strong>Fluorine</strong>
+							</p>
+							<p> </p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+						<a href="/shop/product/metalaxylene-17">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/17/image/200x200?unique=b231af9" alt="Metalaxylene"/>
+							<p>
+							  <strong>Metalaxylene</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+					    <a href="/shop/product/feldspar-6">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/6/image/200x200?unique=116d72b" alt="Feldspar"/>
+							<p>
+							  <strong>Feldspar</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+				  </div>
+				  
+				  
+				<div class="row text-center">
+					<div class="col-sm-4">
+					  <a href="/shop/product/kaolin-13">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/13/image/200x200?unique=817d6b5" alt="Kaolin"/>
+							<p>
+							  <strong>Kaolin</strong>
+							</p>
+							<p> </p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+						<a href="/shop/product/microsilica-3">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/3/image/200x200?unique=b231af9" alt="Microsilica"/>
+							<p>
+							  <strong>Microsilica</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+					<div class="col-sm-4">
+					    <a href="/shop/product/lime-12">
+						  <div class="thumbnail">
+							<img src="/web/image/product.template/12/image/200x200?unique=116d72b" alt="Lime"/>
+							<p>
+							  <strong>Lime</strong>
+							</p>
+							<p></p>
+						  </div>
+						</a>  
+					</div>
+				  </div>
+				  
+				
+				  
+				  
+				  
+				  
+				  <span style="float: right;color: gray;font-size: 12px;cursor: pointer;"> <a href="/shop"> Other Products</a></span>
+				</div>
+			  </section>
+
+
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			    <section class="s_features" >
+				<div class="container">
+				  <h3 style="text-align:center;border-bottom:none;padding-bottom: 20px;">Our Customers</h3>
+				  <div class="row mt16 mb16">
+					
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/iranzob.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/azarakh.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/barez.png" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/cust.jpg" style="width: 100px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						<div class="col-md-2 text-center">
+						   <img src="/jahan_theme/static/src/img/customer/cust3.ico" style="width: 80px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						<div class="col-md-2 text-center">
+						  <img src="/jahan_theme/static/src/img/customer/cust1.png" style="width: 150px;"/>
+						  <h3 class="mt8 mb0"></h3>
+						  <p class="text-muted">
+							<br/>
+						  </p>
+						</div>
+						
+						
+						
+					</div>
+				<div class="row mt16 mb16">	
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/cust2.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/electrod.jpg" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/PhotoBox.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/summit.png" style="width: 100px;background-color: gray;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					<!--<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/rock.png" style="width: 200px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>-->
+					
+					<div class="col-md-2 text-center">
+					   <img src="/jahan_theme/static/src/img/customer/norin-mika.png" style="width: 100px;"/>
+					  <h3 class="mt8 mb0"></h3>
+					  <p class="text-muted">
+						<br/>
+					  </p>
+					</div>
+					
+					
+					
+					
+					
+					
+				  </div>
+				</div>
+			  </section>
 		
+			  <section class="parallax s_parallax oe_img_bg" style="height:250px;background-image: none;" data-scroll-background-ratio="1.6"><span class="s_parallax_bg" style='background-image: url("/jahan_theme/static/src/img/jahan-rock-tree-care.jpg"); top: -44.96px; bottom: -44.96px; transform: translateY(-2px);'><h3 style="color: white;text-align: right;color: white;padding-right: 100px;padding-top: 150px;">keep Natural environment with jahanpowder</h3></span></section>
+			  
+			</t>
+			
+			  
+			</div>
+		  </t>
+
+	</template>
+
 	<template id="jahan_footer" inherit_id="website.footer_custom" name="Jahan Footer">
 		<xpath expr="//div[@id='footer']" position="replace">
-			<div id="footer" class="container hidden-print">
-				<div class="row">
-					<div class="col-md-4 col-lg-3">
-						<h4>لینک های مهم</h4>
-						<ul class="list-unstyled" id="products">
-							<li><a href="/">صفحه اصلی</a></li>
-							<li><a href="/page/jahan_aboutus">درباره ما</a></li>
-						</ul>
-					</div>
-					<div class="col-md-4  col-lg-3" id="info">
-						<h4>راه های ارتباطی</h4>
-						<ul class="list-unstyled">
-							<li><a href="/page/jahan_contactus">تماس با ما</a></li>
-						</ul>
-						<ul class="list-unstyled">
-							<li t-ignore="true"><i class="fa fa-phone"></i> <span t-field="res_company.phone"></span></li>
-							<li t-ignore="true"><i class="fa fa-envelope"></i>  <span t-field="res_company.email"></span></li>
-						</ul>
-						<h2>
-							<a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook-square"/></a>
-							<a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a>
-							<a t-att-href="website.social_linkedin" t-if="website.social_linkedin"><i class="fa fa-linkedin"/></a>
-							<a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a>
-							<a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus-square"/></a>
-							<a t-att-href="website.social_github" t-if="website.social_github"><i class="fa fa-github"/></a>
-						</h2>
-					</div>
-					<div class="col-md-4 col-lg-5 col-lg-offset-1">
 			
-						<!--<t t-call="website.language_selector"/>-->
+			<t t-if="lang_direction == 'rtl'">	
+				<div id="footer" class="container hidden-print">
+					<div class="row">
+						<div class="col-md-4 col-lg-3">
+							<h4>لینک های مهم</h4>
+							<ul class="list-unstyled" id="products">
+								<li><a href="/">صفحه اصلی</a></li>
+								<li><a href="/aboutus">درباره ما</a></li>
+							</ul>
+						</div>
+						<div class="col-md-4  col-lg-3" id="info">
+							<h4>راه های ارتباطی</h4>
+							<ul class="list-unstyled">
+								<li><a href="/contactus">تماس با ما</a></li>
+							</ul>
+							<ul class="list-unstyled">
+								<li t-ignore="true"><i class="fa fa-phone"></i> <span t-field="res_company.phone"></span></li>
+								<li t-ignore="true"><i class="fa fa-envelope"></i>  <span t-field="res_company.email"></span></li>
+							</ul>
+							<h2>
+								<a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook-square"/></a>
+								<a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a>
+								<a t-att-href="website.social_linkedin" t-if="website.social_linkedin"><i class="fa fa-linkedin"/></a>
+								<a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a>
+								<a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus-square"/></a>
+								<a t-att-href="website.social_github" t-if="website.social_github"><i class="fa fa-github"/></a>
+							</h2>
+						</div>
+						<div class="col-md-4 col-lg-5 col-lg-offset-1">
+				
+							<!--<t t-call="website.language_selector"/>-->
+						</div>
 					</div>
 				</div>
-			</div>
+			</t>
+			<t t-if="lang_direction == 'ltr'">
+				<div id="footer" class="container hidden-print">
+					<div class="row">
+						<div class="col-md-4 col-lg-3">
+							<h4>Top Links</h4>
+							<ul class="list-unstyled" id="products">
+								<li><a href="/">Home</a></li>
+								<li><a href="/aboutus">About US</a></li>
+							</ul>
+						</div>
+						<div class="col-md-4  col-lg-3" id="info">
+							<h4>Connection Links</h4>
+							<ul class="list-unstyled">
+								<li><a href="/contactus">Contact US</a></li>
+							</ul>
+							<ul class="list-unstyled">
+								<li t-ignore="true"><i class="fa fa-phone"></i> <span t-field="res_company.phone"></span></li>
+								<li t-ignore="true"><i class="fa fa-envelope"></i>  <span t-field="res_company.email"></span></li>
+							</ul>
+							<h2>
+								<a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook-square"/></a>
+								<a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a>
+								<a t-att-href="website.social_linkedin" t-if="website.social_linkedin"><i class="fa fa-linkedin"/></a>
+								<a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a>
+								<a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus-square"/></a>
+								<a t-att-href="website.social_github" t-if="website.social_github"><i class="fa fa-github"/></a>
+							</h2>
+						</div>
+						<div class="col-md-4 col-lg-5 col-lg-offset-1">
+				
+							<!--<t t-call="website.language_selector"/>-->
+						</div>
+					</div>
+				</div>
+			</t>
+			
+			
+			
 		</xpath>
 	</template>
-	
-	
 	
 	<template id="website.layout_footer_copyright" inherit_id="website.layout">
 		<xpath expr="//footer" position="inside">
 			<div class="container mt16 mb8">
 				<div class="pull-right" style="color:red">
-													نسخه آزمایشی
 													</div>
 				<div class="pull-left text-muted">
 													  Copyright &amp;copy; <span t-field="res_company.name">Company name</span></div>
@@ -77,364 +852,86 @@
 		</xpath>
 	</template>
 	
-	
-	
-	<template id="website.jahan_homepage" name="Jahan Homepage" page="True">
-		  <t t-call="website.layout">
-
-    <t t-set="pageName" t-value="'homepage'"/>
-    <div id="wrap" class="oe_structure oe_empty">
-      <section class="parallax s_parallax_slider mb0 mt0" style="height: 448px; overflow: hidden;" data-scroll-background-ratio="0.6">
-        <div>
-          <div>
-            <div class="oe_structure">
-              <div id="myCarousel1502876737194" class="carousel slide s_banner mt0" data-interval="10000" style="height: 400px;">
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel1502876737194" data-slide-to="0" class="active"/>
-                  <li data-target="#myCarousel1502876737194" data-slide-to="1"/>
-                  <li data-target="#myCarousel1502876737194" data-slide-to="2"/>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="item oe_img_bg oe_custom_bg active" style="background-image: url(&quot;/jahan_theme/static/src/img/s01.jpg&quot;);">
-                    <div class="container">
-                      <div class="row content">
-                        <div class="carousel-content col-md-4 col-md-offset-1 mt128 mb96">
-                          <h2>معادن غنی<br/></h2>
-                          <h4>&amp;nbsp;</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item oe_img_bg oe_custom_bg" style="background-image: url(&quot;/jahan_theme/static/src/img/s06.jpg&quot;);">
-                    <div class="container">
-                      <div class="row content">
-                        <div class="carousel-content col-md-4 col-md-offset-1 mt128 mb96">
-                          <h2>تجهیزات پیشترفته<br/></h2>
-                          <h4>&amp;nbsp;</h4>
-                          <p>
-                            <br/>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item oe_img_bg oe_custom_bg" style="background-image: url(&quot;/jahan_theme/static/src/img/s07.jpg&quot;);">
-                    <div class="container">
-                      <div class="row content">
-                        <br/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-control left" data-target="#myCarousel1502876737194" data-slide="prev" style="width: 10%" data-cke-saved-href="#myCarousel1502876737194">
-                  <i class="fa fa-chevron-left"/>
-                </div>
-                <div class="carousel-control right" data-target="#myCarousel1502876737194" data-slide="next" style="width: 10%" data-cke-saved-href="#myCarousel1502876737194">
-                  <i class="fa fa-chevron-right"/>
-                </div>
-              </div>
-              <section class="parallax s_parallax_slider oe_custom_bg oe_img_bg" style="background-image: url(&quot;/web/image/website.s_parallax_slider_default_image&quot;);" data-scroll-background-ratio="0.3">
-                <div>
-                  <div>
-                    <div class="oe_structure"/>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </section>
-       <section class="s_features">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
-              <div class="serviceBox">
-                <div class="service-icon">
-                  <span>
-                    <i class="fa "/>
-                  </span>
-                </div>
-                <div class="service-content">
-                  <h3 class="title">تولید<br/></h3>
-                  <p class="description">توليد خالص ترين مواد معدنی با بالاترين استانداردهاى پايدارى و زيست محيطی<br/></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
-              <div class="serviceBox green">
-                <div class="service-icon">
-                  <span/>
-                </div>
-                <div class="service-content">
-                  <h3 class="title">زنجیره تامین<br/></h3>
-                  <p class="description">تامين منابع، برنامه ريزى، مديريت موجودى و ارتباط با&amp;nbsp; مشتريان با بهره گيرى از راهكارهاى كيفی و هزينه متناسب</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
-              <div class="serviceBox orange">
-                <div class="service-icon">
-                  <span>
-                    <i class="fa "/>
-                  </span>
-                </div>
-                <div class="service-content">
-                  <h3 class="title">تحقیق و توسعه<br/></h3>
-                  <p class="description">نياز به پيش بينی چالشهاى امروز و آينده با در نظر گرفتن تغييرات چشمگير به وجود آمده در صنايع</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xsx-6 pull-right">
-              <div class="serviceBox blue">
-                <div class="service-icon">
-                  <span>
-                    <i class="fa"/>
-                  </span>
-                </div>
-                <div class="service-content">
-                  <h3 class="title">خدمات فنی و نوآوری<br/></h3>
-                  <p class="description">ارائه راه حل متناسب با نياز مشتريان با بهره گيرى از كارشناسان متعدد، نوآورى ها و خدمات فنی پايدار</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-	   
-	   <section style="background-color:#F8F8F8;display: none;">
-        <div class="container text-center ">
-          <h2>محصولات<br/></h2>
-          <div class="row text-center">
-            <div class="col-sm-4">
-              <div class="thumbnail">
-                <img src="/web/image/596" alt="Paris"/>
-                <p>
-                  <strong>Paris</strong>
-                </p>
-                <p>Yes, we built Paris</p>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="thumbnail">
-                <img src="/web/image/597" alt="New York"/>
-                <p>
-                  <strong>New York</strong>
-                </p>
-                <p>We built New York</p>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="thumbnail">
-                <img src="/web/image/598" alt="San Francisco"/>
-                <p>
-                  <strong>San Francisco</strong>
-                </p>
-                <p>Yes, San Fran is ours</p>
-              </div>
-            </div>
-          </div>
-          <span style="float: left;color: gray;font-size: 12px;cursor: pointer;"> سایر محصولات</span>
-        </div>
-      </section>
-      <section style="background-color:#F8F8F8;display: none;">
-        <div class="container text-center ">
-          <h2>خدمات و توانمندی ها<br/></h2>
-          <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"/>
-              <li data-target="#myCarousel" data-slide-to="1"/>
-              <li data-target="#myCarousel" data-slide-to="2"/>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <h4>This company is the bestam so happy with the result<br/><span style="font-style:normal;">Michael RoeComment Box</span></h4>
-              </div>
-              <div class="item">
-                <h4>One wordWOW<br/><span style="font-style:normal;">John Doe Rep Inc</span></h4>
-              </div>
-              <div class="item">
-                <h4>Could IBE any more happy with this company<br/><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
-              </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <span class="fa fa-chevron-left" aria-hidden="true"/>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <span class="fa fa-chevron-right" aria-hidden="true"/>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-      </section>
-      <section class="s_features" >
-        <div class="container">
-          <h3 style="text-align:center;border-bottom:none;padding-bottom: 20px;">برخی از مشتریان</h3>
-          <div class="row mt16 mb16">
-            
-				<div class="col-md-2 text-center">
-				   <img src="/jahan_theme/static/src/img/customer/iranzob.png" style="width: 100px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				<div class="col-md-2 text-center">
-				   <img src="/jahan_theme/static/src/img/customer/azarakh.png" style="width: 100px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				<div class="col-md-2 text-center">
-				   <img src="/jahan_theme/static/src/img/customer/barez.png" style="width: 100px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				<div class="col-md-2 text-center">
-				   <img src="/jahan_theme/static/src/img/customer/cust.jpg" style="width: 100px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				
-				<div class="col-md-2 text-center">
-				   <img src="/jahan_theme/static/src/img/customer/cust3.ico" style="width: 80px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				
-				<div class="col-md-2 text-center">
-				  <img src="/jahan_theme/static/src/img/customer/cust1.png" style="width: 150px;"/>
-				  <h3 class="mt8 mb0"></h3>
-				  <p class="text-muted">
-					<br/>
-				  </p>
-				</div>
-				
-				
-				
-			</div>
-		<div class="row mt16 mb16">	
-			
-			<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/cust2.png" style="width: 100px;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>
-			
-			<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/electrod.jpg" style="width: 100px;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>
-			
-			<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/PhotoBox.png" style="width: 100px;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>
-			
-			
-			
-			<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/summit.png" style="width: 100px;background-color: gray;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>
-			
-			<!--<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/rock.png" style="width: 200px;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>-->
-			
-			<div class="col-md-2 text-center">
-               <img src="/jahan_theme/static/src/img/customer/norin-mika.png" style="width: 100px;"/>
-              <h3 class="mt8 mb0"></h3>
-              <p class="text-muted">
-                <br/>
-              </p>
-            </div>
-			
-			
-			
-			
-			
-			
-          </div>
-        </div>
-      </section>
-      <section class="parallax s_parallax oe_img_bg oe_custom_bg" style='height:250px;background-image: url("/jahan_theme/static/src/img/jahan-rock-tree-care.jpg");' data-scroll-background-ratio="0.6">
-        <h3 style="color: white;text-align: right;color: white;padding-right: 100px;padding-top: 50px;">حفظ محیط زیست با محصولات جهان پودر</h3>
-      </section>
-    </div>
-  </t>
-
-	</template>
-		
-		
-	<template id="website.jahan_aboutus" name="Jahan About us" page="True">
+	<!--
+	درباره ما، جهان پودر دليجان
+	-->
+	<template id="website.jahan_aboutus" name="Jahan About us" >
 		<t t-call="website.layout">
-			<div id="wrap">
-			  <div class="oe_structure">
-				<section>
-				  <div class="container">
-					<div class="row">
-					  <div class="col-md-12">
-						<h1 class="text-center">درباره ما<br/></h1>
-						<h3 class="text-muted text-center">&amp;nbsp;</h3>
+			<t t-if="lang_direction == 'rtl'">
+				<div id="wrap">
+				  <div class="oe_structure">
+					<section>
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-12">
+							<h1 class="text-center">درباره ما<br/></h1>
+							<h3 class="text-muted text-center">&amp;nbsp;</h3>
+						  </div>
+						</div>
 					  </div>
-					</div>
-				  </div>
-				</section>
-				<section>
-				  <div class="container">
-					<div class="row">
-					
-					  <div class="col-md-6 mt32 content  ">
-					  شركت جهان پودر دليجان در سال ١٣٧٩ به عنوان توليدكننده انواع مواد ميكرونيزه معدنی و صنعتی در شهر صنعتی دليجان احداث شد. اين مجموعه داراى دو خط توليد با روش بال ميل بوده و با بهره گيري از تجهيزات مورد نياز پيشرفته، توان توليد و تامين انواع مواد معدنی فلزى و غير فلزى ميكرونيزه و دانه بندى را جهت مصرف در صنايع مختلف دارد. اين شركت مواد اوليه مورد نياز را از معادن خود و ساير منابع معتبر تهيه نموده، همچنين با ايجاد آزمايشگاه نوين، جهت كنترل كيفيت اين امكان را دارد كه محصول نهايی را مطابق با استانداردهاى بين المللی و نياز مشتريان، توليد نمايد. 
-					  
-					 				</div>
-					  <div class="col-md-4 col-md-offset-2 mt16 mb16">
-						<img src="/website/static/src/img/library/business_conference.jpg" class="img img-responsive shadow" alt="تیم ما"/>
+					</section>
+					<section>
+					  <div class="container">
+						<div class="row">
+						
+						  <div class="col-md-6 mt32 content  ">
+						  شركت جهان پودر دليجان در سال ١٣٧٩ به عنوان توليدكننده انواع مواد ميكرونيزه معدنی و صنعتی در شهر صنعتی دليجان احداث شد. اين مجموعه داراى دو خط توليد با روش بال ميل بوده و با بهره گيري از تجهيزات مورد نياز پيشرفته، توان توليد و تامين انواع مواد معدنی فلزى و غير فلزى ميكرونيزه و دانه بندى را جهت مصرف در صنايع مختلف دارد. اين شركت مواد اوليه مورد نياز را از معادن خود و ساير منابع معتبر تهيه نموده، همچنين با ايجاد آزمايشگاه نوين، جهت كنترل كيفيت اين امكان را دارد كه محصول نهايی را مطابق با استانداردهاى بين المللی و نياز مشتريان، توليد نمايد. 
+						  
+										</div>
+						  <div class="col-md-4 col-md-offset-2 mt16 mb16">
+							<img src="/website/static/src/img/library/business_conference.jpg" class="img img-responsive shadow" alt="تیم ما"/>
+						  </div>
+						</div>
 					  </div>
-					</div>
+					</section>
 				  </div>
-				</section>
-			  </div>
-			  <div class="oe_structure"/>
-			</div>
+				  <div class="oe_structure"/>
+				</div>
+			</t>
+			<t t-if="lang_direction == 'ltr'">
+				<div id="wrap">
+				  <div class="oe_structure">
+					<section>
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-12">
+							<h1 class="text-center">About US<br/></h1>
+							<h3 class="text-muted text-center">&amp;nbsp;</h3>
+						  </div>
+						</div>
+					  </div>
+					</section>
+					<section>
+					  <div class="container">
+						<div class="row">
+						
+						  <div class="col-md-6 mt32 content">
+						  Delijan powder company was established in 2000 as a producer of various micronized mineral and industrial materials in the industrial city of Delijan. This set has two lines of production by the Ball Mill method and by using the advanced equipment, the ability to produce and supply a variety of materials Metallic and non-metallic minerals are micronized and graded for use in various industries.The company has provided the necessary materials from its mines and other reliable sources, and by creating a new laboratory, it is possible to produce the final product in accordance with international standards and customer requirements in order to control the quality.
+						  </div>
+						  <div class="col-md-4 col-md-offset-2 mt16 mb16">
+							<img src="/website/static/src/img/library/business_conference.jpg" class="img img-responsive shadow" alt="our team"/>
+						  </div>
+						</div>
+					  </div>
+					</section>
+				  </div>
+				  <div class="oe_structure"/>
+				</div>
+			</t>
 		</t>
 	</template>	
 		
-		
-		
-	<template id="website.jahan_contactus"  name="Jahan Contact Form" page="True" >
+	<!--
+	تماس با ما، جهان پودر دليجان
+	-->
+	<template id="website.jahan_contactus"  name="Jahan Contact Form"  >
 		
 		<t t-call="website.layout">
 		  <div id="wrap" class="aboutus">
-			<div class="oe_structure"/>
+		  <t t-if="lang_direction == 'rtl'">	
 			<div class="container">
 				<h1 style="text-align: center;">تماس با ما</h1>
 				<div class="row" style="margin-top: 50px;">
-					
-					
 									
 					<div class="col-md-4 mb32" style="text-align: right;padding-right: 50px;">
 									 <!--				<t t-call="website.company_description"/>
@@ -442,9 +939,9 @@
 							<h3 style="color: rebeccapurple;" >اطلاعات تماس</h3>
 							<hr/>
 							<address>
-							<strong style="color: rebeccapurple;" >دفتر مركزى: </strong>تهران -فرمانیه - خيابان لواسانی بعد از کوه نور - کوچه فربین - پلاک 5 - واحد 1<br/>
-							<strong style="color: rebeccapurple;" > تلفن: </strong> 26114826 021 - 26113128 021 <br/>
-							<strong style="float: right;color: rebeccapurple;">  :ایمیل</strong> dir@jahanpodr.com - sales@jahanpodr.com  <br/>
+							<strong style="color: rebeccapurple;" >دفتر مركزى: </strong>تهران -سعادت آباد - بلوار شهرداری - خیابان 11 غربی (مقدس) - پلاک 22 - واحد 6<br/>
+							<strong style="color: rebeccapurple;" > تلفن: </strong> 22137299  - 22374336  <br/>
+							<strong style="float: right;color: rebeccapurple;">  :ایمیل</strong> dir@jahanpowder.com - sales@jahanpowder.com  <br/>
 
 							</address>
 
@@ -517,294 +1014,364 @@
 					
 				</div>
 			</div>
-			<div class="oe_structure"/>
+		  </t>	
+		  <t t-if="lang_direction == 'ltr'">		
+			<div class="container">
+				<h1 style="text-align: center;">Contact US</h1>
+				<div class="row" style="margin-top: 50px;">
+					<div class="col-md-8">
+						<div class="oe_structure">
+							<div class="" style="text-align: left;">
+								<p>Tell To Us About Any Thing</p>
+								<p>Contact You Very Soon</p>
+							</div>
+						</div>
+						<div>
+							<form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/page/website_crm.contactus_thanks" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+								
+								<div class="form-group form-field o_website_form_required_custom">
+									<label class="col-md-3 col-sm-4 control-label" for="contact_name">Name</label>
+									<div class="col-md-7 col-sm-8">
+										<input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+									</div>
+								</div>
+								<div class="form-group form-field">
+									<label class="col-md-3 col-sm-4 control-label" for="phone">Phone</label>
+									<div class="col-md-7 col-sm-8">
+										<input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')"/>
+									</div>
+
+								</div>
+								<div class="form-group form-field o_website_form_required_custom">
+									
+									<label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+									<div class="col-md-7 col-sm-8">
+										<input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')"/>
+									</div>
+
+								</div>
+								<div class="form-group form-field o_website_form_required_custom">
+									<label class="col-md-3 col-sm-4 control-label" for="partner_name">Company</label>
+									<div class="col-md-7 col-sm-8">
+										<input type="text" class="form-control o_website_form_input" name="partner_name" required="" t-att-value="request.params.get('partner_name', '')"/>
+									</div>
+									
+
+								</div>
+								<div class="form-group form-field o_website_form_required">
+									<label class="col-md-3 col-sm-4 control-label" for="name">Subject</label>
+									<div class="col-md-7 col-sm-8">
+										<input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')"/>
+									</div>
+	
+								</div>
+								<div class="form-group form-field o_website_form_required_custom">
+									<label class="col-md-3 col-sm-4 control-label" for="description">Question</label>
+									<div class="col-md-7 col-sm-8">
+										<textarea class="form-control o_website_form_input" name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+									</div>
+
+								</div>
+								<div class="form-group">
+									<div class="col-md-3 col-sm-4"></div>
+									<div class="col-sm-8 col-md-7">
+										<span class="btn btn-primary btn-lg o_website_form_send">Send</span>
+										<span id="o_website_form_result"/>
+									</div>
+								</div>
+							</form>
+						</div>
+					
+					</div>
+					<div class="col-md-4 mb32" style="text-align: left;padding-right: 50px;">
+									 <!--				<t t-call="website.company_description"/>
+									-->	
+							<h3 style="color: rebeccapurple;" >Contact Information</h3>
+							<hr/>
+							<address>
+							<strong style="color: rebeccapurple;" >Office: </strong>Unit 6,No 22, Moghaddas Street,Shahrdari Blv,Saadatabad,Tehran<br/>
+							<strong style="color: rebeccapurple;" > Phone: </strong> 22137299  - 22374336  <br/>
+							<strong style="float: left;color: rebeccapurple;">Email: </strong> dir@jahanpowder.com - sales@jahanpowder.com  <br/>
+
+							</address>
+
+							<address>
+							<strong style="color: rebeccapurple;" >Manufacture: </strong> Industrial Town of Isfahan Road,Delijan  <br/>
+							<strong style="color: rebeccapurple;" >Phone: </strong>   44433407  - 44433406 
+							</address>
+					</div>
+				</div>
+			</div>
+		  </t>	
+			
 		  </div>
     </t>
 		
 		
 		
 	</template>
-	
-	<template name="Contact us" id="website_crm.contactus_thanks">
-            <t t-call="website.layout">
-              <div id="wrap">
-                <div class="oe_structure"/>
-                <div class="container thanks-contactus">
-                    
-                    <div class="row">
-					
-                        <div class="col-md-8">
-						<h1>Thanks!</h1>
-                            <div class="alert alert-success">
-                                Your message has been sent successfully.
-                                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
-                            </div>
-                            <p>
-                                We will get back to you shortly.
-                            </p><p class="mt64">
-                                If you have an emergency, do not hesitate to contact us by phone:
-                            </p>
-                            <ul class="list-unstyled">
-                                <li style="direction:ltr"><span t-field="res_company.phone"/>  : <i class="fa fa-phone"/></li>
-                                <li><i class="fa fa-envelope"/> : <span t-field="res_company.email"/></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <!--<t t-call="website.company_description"/>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="oe_structure"/>
-              </div>
-            </t>
-        </template>
-	
-	<template name="Jahan Products" inherit_id="website_sale.products"  id="jahan_products" >
-      <xpath expr="t" position="replace">  
+
+	<template name="Jahan Product" inherit_id="website_sale.product" id="jahan_product">
+      <xpath expr="t" position="replace">    
 		<t t-call="website.layout">
-            <t t-set="additional_title">محصولات</t>
-            <div id="wrap" class="js_sale">
-                <div class="oe_structure"/>
-                <div class="container oe_website_sale">
-                    <div class="products_pager">
-                        <div class="row" style="width: 100%;">
-                           <!-- <t t-call="website_sale.search">
-                                <t t-set="search_class" t-value="'pagination form-inline o_website_sale_search'"/>
-                            </t>
-                            <t t-call="website_sale.pricelist_list"/>-->
-                            <t t-call="website.pager"/>
+            <t t-set="additional_title" t-value="product.name" />
+            <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
+                <section t-attf-class="container mt8 oe_website_sale #{(compute_currency(product.lst_price) - product.website_price) &gt; 0.01 and website.get_current_pricelist().discount_policy == 'without_discount'  and 'discount'}" id="product_detail">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a t-att-href="keep(category=0)">Products</a>
+                                </li>
+                                <li t-if="category">
+                                    <a t-att-href="keep('/shop/category/%s' % slug(category), category=0)" t-field="category.name" />
+                                </li>
+                                <li class="active">
+                                    <span t-field="product.name" />
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="col-sm-3 mb8">
+                            <t t-call="website_sale.search" />
+                        </div>
+                        <div id="website_published_button" class="col-sm-3">
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <t t-call="website_sale.pricelist_list" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="hidden" id="products_grid_before"/>
-                        <div class="col-md-12" id="products_grid">
-                            <table width="100%">
-                                <tbody>
-                                    <tr t-ignore="true">
-                                        <td t-foreach="range(0,rows)" t-as="row" t-attf-width="#{100/rows}%"/>
-                                    </tr>
-                                    <tr t-foreach="bins" t-as="tr_product">
-                                        <t t-foreach="tr_product" t-as="td_product">
-                                            <t t-if="td_product">
-                                                <t t-set="product" t-value="td_product['product']"/>
-                                                <td t-att-colspan="td_product['x'] != 1 and td_product['x']" t-att-rowspan="td_product['y'] != 1 and td_product['y']" t-attf-class="oe_product oe_grid oe-height-#{td_product['y']*2} #{ td_product['class'] }">
-                                                    <div class="oe_product_cart" t-att-data-publish="product.website_published and 'on' or 'off'">
-                                                        <t t-set="product_image_big" t-value="td_product['x']+td_product['y'] &gt; 2"/>
-                                                        <t t-call="website_sale.products_item"/>
-                                                    </div>
-                                                </td>
-                                            </t>
-                                            <td t-if="not td_product" class="oe-height-2"/>
+                        <div class="col-sm-7">
+                            <span itemprop="image" t-attf-content="{{request.httprequest.url_root}}web/image/product.template/{{product.id}}/image" t-field="product.image" t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image'}" groups="!website_sale.group_website_multi_image"/>
+                            <t groups="website_sale.group_website_multi_image">
+                                <t t-set="variant_img" t-value="product.product_variant_id.image_variant"/>
+                                <t t-set="image_ids"  t-value="product.product_image_ids"/>
+                                <div id="o-carousel-product" class="carousel slide" data-ride="carousel" data-interval="0">
+                                  <div class="carousel-outer">
+                                    <div class="carousel-inner">
+                                        <div class="item active" itemprop="image" t-field="product.image" t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update']}"/>
+                                        <div t-if="variant_img" class="item" itemprop="image" t-field="product.product_variant_id.image" t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update'] + (product.product_variant_id['__last_update'] or '')}"/>
+                                        <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                                            <div class="item" t-field="pimg.image" t-options='{"widget": "image", "class": "product_detail_img", "alt-field": "name", "zoom": "image" }'/>
                                         </t>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <t t-if="not bins">
-                                <div class="text-center text-muted">
-                                    <h3 class="css_editable_display">No product defined.</h3>
-                                    <p groups="sales_team.group_sale_manager">Click <i>'New'</i> in the top-right corner to create your first product.</p>
+                                    </div>
+
+                                    <t t-if="len(image_ids) or variant_img">
+                                        <a class="carousel-control left" href="#o-carousel-product" role="button" data-slide="prev" >
+                                            <span class="fa fa-chevron-left" aria-hidden="true"/>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control right" href="#o-carousel-product" role="button" data-slide="next">
+                                            <span class="fa fa-chevron-right" aria-hidden="true"/>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </t>
+                                  </div>
+
+                                  <ol class="carousel-indicators" t-if="len(image_ids) or variant_img">
+                                    <li data-target="#o-carousel-product" data-slide-to="0" class="active">
+                                        <img class="img img-responsive js_variant_img_small" t-attf-src="/website/image/product.template/{{product.id}}/image/90x90" t-att-alt="product.name"/>
+                                    </li>
+                                    <li t-if="variant_img" data-target="#o-carousel-product" data-slide-to="1" class="">
+                                        <img class="img img-responsive" t-attf-src="/website/image/product.product/{{product.product_variant_id.id}}/image/90x90" t-att-alt="product.name"/>
+                                    </li>
+                                    <t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
+                                        <li data-target="#o-carousel-product" t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
+                                            <img class="img img-responsive" t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90" t-att-alt="pimg.name"/>
+                                        </li>
+                                    </t>
+                                  </ol>
                                 </div>
                             </t>
                         </div>
+                        <div class="col-sm-5 col-lg-4 col-lg-offset-1" id="product_details">
+                            <h1 itemprop="name" t-field="product.name">Product Name</h1>
+                            <span itemprop="url" style="display:none;" t-esc="'%sshop/product/%s' % (request.httprequest.url_root, slug(product))"/>
+                            <t t-set="attribute_value_ids" t-value="get_attribute_value_ids(product)"/>
+                            <form action="/shop/cart/update" class="js_add_cart_variants" t-att-data-attribute_value_ids="attribute_value_ids" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                <div class="js_product" t-if="product.product_variant_ids">
+                                    <t t-placeholder="select">
+                                        <input type="hidden" class="product_id" name="product_id" t-att-value="product.product_variant_id.id if len(product.product_variant_ids) == 1 else '0'" />
+                                        <t t-call="website_sale.variants">
+                                            <t t-set="ul_class" t-value="'nav-stacked'" />
+                                        </t>
+                                    </t>
+                                    <t t-call="website_sale.product_price" />
+                                    <p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">This combination does not exist.</p>
+                                    <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
+                                </div>
+                            </form>
+                            <hr t-if="product.description_sale" />
+                            <div class="o_not_editable">
+                                <p t-field="product.description_sale" class="text-muted" />
+                            </div>
+                            <hr />
+                           <!-- <p class="text-muted">
+                              30-day money-back guarantee<br />
+                              Free Shipping in U.S.<br />
+                              Buy now, get in 2 days
+                            </p>-->
+                        </div>
                     </div>
-                    <div class="products_pager">
-                        <t t-call="website.pager"/>
-                    </div>
-                </div>
-                <div class="oe_structure mb32"/>
+                </section>
+                <div t-if="lang_direction == 'ltr'" itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description" />
+                <div t-if="lang_direction == 'rtl'" itemprop="description" t-field="product.website_description_fa" class="oe_structure mt16" id="product_full_description" />
+                <t t-set="head">
+                    <!-- Facebook and linkedin sharing data -->
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" t-att-content="request.httprequest.url" />
+                    <meta property="og:image" t-attf-content="#{request.httprequest.url_root}web/image/product.template/#{product.id}/image" />
+                    <meta property="og:description" t-att-content="product.description_sale" />
+                    <!--  Twitter sharing data -->
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:site" t-attf-content="@#{res_company.name}" />
+                    <meta name="twitter:title" t-att-content="product.name" />
+                    <meta name="twitter:description" t-att-content="product.description_sale" />
+                    <meta name="twitter:image" t-attf-content="#{request.httprequest.url_root}web/image/product.template/#{product.id}/image" />
+                </t>
             </div>
         </t>
       </xpath>
 	</template>
+
+	<!--
+	محصولات، جهان پودر دليجان
+	توليدكننده انواع پودر و مواد ميكرونيزه صنعتی و معدنی، اخرا، میکروسیلیکا، تونسیل، هماتیت، کائولن، بال کلی، فلورین، دولومیت
+	-->
 	
-	<template name="Jahan Products item" inherit_id="website_sale.products_item"  id="jahan_products_item">
-      <xpath expr="form" position="replace">    
-		<form action="/shop/cart/update" method="post">
-            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <div itemscope="itemscope" itemtype="http://schema.org/Product">
-                <div class="ribbon-wrapper">
-                    <div class="ribbon btn btn-danger">Sale</div>
-                </div>
-                <div class="oe_product_image">
-                    <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
-                        <span itemprop="image" t-field="product.image" t-options="{'widget': 'image', 'resize': None if product_image_big else '300x300', 'zoom': 'image'}" t-att-alt="product.name"/>
-                    </a>
-                </div>
-                <t t-if="show_publish">
-                    <div id="website_published_button" class="" groups="sales_team.group_sale_manager">
-                        <t t-call="website.publish_management">
-                            <t t-set="object" t-value="product"/>
-                            <t t-set="publish_edit" t-value="True"/>
-                            <t t-set="action" t-value="'product.product_template_action'"/>
-                        </t>
+	<template id="website.jahan_confirmation"   inherit_id="website_sale.confirmation">
+      <xpath expr="t" position="replace">   
+		<t t-call="website.layout">
+            <t t-set="additional_title">Shop - Confirmed</t>
+            <div id="wrap">
+                <div class="container oe_website_sale">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h1 class="mb32"><span>Order</span> <em t-field="order.name" /> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+                            <div class="thanks_msg">
+                                <h2>Thank you for your order.
+                                    <!--<a class="btn btn-primary pull-right hidden-xs" href="/shop/print" target="_blank"><i class="fa fa-print"></i> Print</a>
+                                -->
+								</h2>
+                            </div>
+                        </div>
                     </div>
-                </t>
-                <section>
-                    <h5>
-                        <strong>
-                            <a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-field="product.name"/>
-                        </strong>
-                    </h5>
-                    <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price" t-if="product.product_variant_ids">
-                        <!-- <b>
-                            <t t-if="(compute_currency(product.lst_price) - product.website_price ) &gt; 0.01  and website.get_current_pricelist().discount_policy=='without_discount'">
-                                <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}"/>
-                            </t>
-
-                            <span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
-                            <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
-                            <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
-                        </b>-->
-                    </div>
-                </section>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="oe_cart">
+                                    <h3 class="mt32 text-left">
+                                        <strong>Order Details:</strong>
+                                    </h3>
+                                    <table class="table table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class='td-product_name'>Product</th>
+                                                <th class='td-qty'>Quantity</th>
+                                                <th class="text-right td-price">Unit Price</th>
+                                                <th class="text-right td-price-total">Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr t-foreach="order.order_line" t-as="line">
+                                              <td class='td-product_name'>
+                                                  <div>
+                                                      <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
+                                                          <strong t-esc="line.product_id.with_context(display_default_code=False).display_name"/>
+                                                      </a>
+                                                  </div>
+                                                  <div class="text-muted hidden-xs small">
+                                                      <t t-foreach="line.name.splitlines()[1:]" t-as="name_line">
+                                                          <span><t t-esc="name_line"/></span><br/>
+                                                      </t>
+                                                  </div>
+                                              </td>
+                                              <td class='td-qty'>
+                                                  <div id="quote_qty">
+                                                      <span t-field="line.product_uom_qty"/>
+                                                      <span class='hidden-xs' t-field="line.product_uom" groups="product.group_uom"/>
+                                                  </div>
+                                              </td>
+                                              <td class='td-price'>
+                                                  <span class="text-right">
+                                                      <div t-field="line.price_unit"
+                                                          t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                                  </span>
+                                              </td>
+                                              <td class='td-price-total'>
+                                                  <div class="text-right"
+                                                      t-field="line.price_subtotal"
+                                                      t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                              </td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                   <!-- <table class='table'>
+                                      <tr>
+                                          <td class="col-md-8"></td>
+                                          <td class="text-right-not-xs text-left-xs col-sm-2 col-xs-3">Subtotal:</td>
+                                          <td class="text-right col-sm-2 col-xs-3">
+                                              <span t-field="order.amount_untaxed" style="white-space: nowrap;" t-options="{'widget': 'monetary','from_currency': order.pricelist_id.currency_id,'display_currency': website.currency_id}" />
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class='noborder'></td>
+                                          <td class="text-right noborder">Taxes:</td>
+                                          <td class="text-right-not-xs text-left-xs noborder">
+                                               <span t-field="order.amount_tax" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'from_currency': order.pricelist_id.currency_id, 'display_currency': website.currency_id}" />
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class='noborder'></td>
+                                          <td class="text-right"><strong>Total:</strong></td>
+                                          <td class="text-right-not-xs text-left-xs">
+                                              <strong t-field="order.amount_total"
+                                                  t-options='{"widget": "monetary", "display_currency": order.pricelist_id.currency_id}'/>
+                                          </td>
+                                      </tr>
+                                    </table>-->
+                                    <div class="clearfix" />
+                                    <div class="oe_structure" />
+                                    <!--<h3 class="text-left">
+                                        <strong>Payment Information:</strong>
+                                    </h3>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <t t-esc="order.payment_acquirer_id.name" />
+                                                </td>
+                                                <td class="text-right" width="100">
+                                                    <strong>Total:</strong>
+                                                </td>
+                                                <td class="text-right" width="100">
+                                                    <strong t-field="order.amount_total" t-options="{'widget': 'monetary', 'display_currency': order.pricelist_id.currency_id}" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>-->
+                                    <t t-call="website_sale.payment_confirmation_status" />
+                                    <t t-if="request.env['ir.config_parameter'].sudo().get_param('auth_signup.allow_uninvited') == 'True' and request.website.is_public_user()">
+                                        <p class='alert alert-info mt16'>
+                                            <a t-att-href='order.partner_id.signup_prepare() and order.partner_id.signup_url' class='btn btn-primary'>Sign Up</a>
+                                             Now to Follow Your Order
+                                        </p>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="col-md-3 hidden-sm hidden-xs text-muted">
+                               <!-- <h3 class='mt32'>&amp;nbsp;</h3>
+                                <t t-call='website_sale.bill_to'>
+                                    <t t-set="order" t-value= "order"/>
+                                </t>-->
+                            </div>
+                        </div>
+                </div>
+                <div class="oe_structure" />
             </div>
-        </form>
-	  </xpath>	
-    </template>
+        </t>
+      </xpath>	
+	</template>
 
-    	
-	<template name="Jahan Product" inherit_id="website_sale.product" id="jahan_product">
-      <xpath expr="t" position="replace">    
-  
-			<t t-call="website.layout">
-				<t t-set="additional_title" t-value="product.name"/>
-				<div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
-					<section t-attf-class="container mt8 oe_website_sale #{(compute_currency(product.lst_price) - product.website_price) &gt; 0.01 and website.get_current_pricelist().discount_policy == 'without_discount'  and 'discount'}" id="product_detail">
-						<div class="row">
-							
-							<div class="col-sm-2 text-right">
-								<!--<t t-call="website_sale.pricelist_list"/>-->
-							</div>
-							<div id="website_published_button" class="col-sm-3">
-								<t t-call="website.publish_management" groups="sales_team.group_sale_manager">
-									<t t-set="object" t-value="product"/>
-									<t t-set="publish_edit" t-value="True"/>
-									<t t-set="action" t-value="'product.product_template_action'"/>
-								</t>
-							</div>
-							<div class="col-sm-3 mb8">
-								<!--<t t-call="website_sale.search"/>-->
-							</div>
-							<div class="col-sm-4">
-								<ol class="breadcrumb">
-									<li class="active">
-										<span t-field="product.name"/>
-									</li>
-									<li t-if="category">
-										<a t-att-href="keep('/shop/category/%s' % slug(category), category=0)" t-field="category.name"/>
-									</li>
-									<li>
-										<a t-att-href="keep(category=0)">محصولات</a>
-									</li>
-									
-								</ol>
-							</div>
-						
-						
-						</div>
-						<div class="row">
-							<div class="col-sm-7">
-								<span itemprop="image" t-field="product.image" t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image'}" groups="!website_sale.group_website_multi_image"/>
-								<t groups="website_sale.group_website_multi_image">
-									<t t-set="variant_img" t-value="product.product_variant_id.image_variant"/>
-									<t t-set="image_ids" t-value="product.product_image_ids"/>
-									<div id="o-carousel-product" class="carousel slide" data-ride="carousel" data-interval="0">
-									  <div class="carousel-outer">
-										<div class="carousel-inner">
-											<div class="item active" itemprop="image" t-field="product.product_variant_id.image" t-options="{'widget': 'image', 'class': 'product_detail_img js_variant_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update'] + product.product_variant_id['__last_update']}"/>
-											<div t-if="variant_img" class="item" itemprop="image" t-field="product.image" t-options="{'widget': 'image', 'class': 'product_detail_img', 'alt-field': 'name', 'zoom': 'image', 'unique': product['__last_update'] + product.product_variant_id['__last_update']}"/>
-											<t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-												<div class="item" t-field="pimg.image" t-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;product_detail_img&quot;, &quot;alt-field&quot;: &quot;name&quot;, &quot;zoom&quot;: &quot;image&quot; }"/>
-											</t>
-										</div>
-
-										<t t-if="len(image_ids) or variant_img">
-											<a class="carousel-control left" href="#o-carousel-product" role="button" data-slide="prev">
-												<span class="fa fa-chevron-left" aria-hidden="true"/>
-												<span class="sr-only">Previous</span>
-											</a>
-											<a class="carousel-control right" href="#o-carousel-product" role="button" data-slide="next">
-												<span class="fa fa-chevron-right" aria-hidden="true"/>
-												<span class="sr-only">Next</span>
-											</a>
-										</t>
-									  </div>
-
-									  <ol class="carousel-indicators" t-if="len(image_ids) or variant_img">
-										<li data-target="#o-carousel-product" data-slide-to="0" class="active">
-											<img class="img img-responsive js_variant_img_small" t-attf-src="/website/image/product.product/{{product.product_variant_ids[0].id}}/image/90x90" t-att-alt="product.name"/>
-										</li>
-										<li t-if="variant_img" data-target="#o-carousel-product" data-slide-to="1" class="">
-											<img class="img img-responsive" t-attf-src="/website/image/product.template/{{product.id}}/image/90x90" t-att-alt="product.name"/>
-										</li>
-										<t t-if="len(image_ids)" t-foreach="image_ids" t-as="pimg">
-											<li data-target="#o-carousel-product" t-att-data-slide-to="pimg_index + (variant_img and 2 or 1)">
-												<img class="img img-responsive" t-attf-src="/website/image/product.image/{{pimg.id}}/image/90x90" t-att-alt="pimg.name"/>
-											</li>
-										</t>
-									  </ol>
-									</div>
-								</t>
-							</div>
-							<div class="col-sm-5 col-lg-4 col-lg-offset-1" id="product_details">
-								<h1 itemprop="name" t-field="product.name">Product Name</h1>
-								<span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
-								<t t-set="attribute_value_ids" t-value="get_attribute_value_ids(product)"/>
-								<form action="/shop/cart/update" class="js_add_cart_variants" t-att-data-attribute_value_ids="attribute_value_ids" method="POST">
-									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-									<div class="js_product" t-if="product.product_variant_ids">
-										<t t-placeholder="select">
-											<input type="hidden" class="product_id" name="product_id" t-att-value="product.product_variant_id.id if len(product.product_variant_ids) == 1 else '0'"/>
-											<t t-call="website_sale.variants">
-												<t t-set="ul_class" t-value="'nav-stacked'"/>
-											</t>
-										</t>
-										<t t-call="website_sale.product_price"/>
-										<p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
-										<a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
-									</div>
-								</form>
-								<hr t-if="product.availability != 'empty'"/>
-								<div t-if="product.availability == 'in_stock'" class="alert alert-success">
-									<span class="fa fa-check"/>
-									<span>In Stock</span>
-								</div>
-								<div t-if="product.availability == 'warning'" class="alert alert-warning">
-									<span class="fa fa-warning"/>
-									<span t-field="product.availability_warning"/>
-								</div>
-								<hr t-if="product.description_sale"/>
-								<div>
-									<p t-field="product.description_sale" class="text-muted"/>
-								</div>
-								<hr/>
-								<!--<p class="text-muted">
-								  30-day money-back guarantee<br/>
-								  Free Shipping in U.S.<br/>
-								  Buy now, get in 2 days
-								</p>-->
-							</div>
-						</div>
-					</section>
-					<div itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description"/>
-					<t t-set="head">
-						<!-- Facebook and linkedin sharing data -->
-						<meta property="og:type" content="website"/>
-						<meta property="og:url" t-att-content="request.httprequest.url"/>
-						<meta property="og:image" t-attf-content="#{request.httprequest.url_root}web/image/product.template/#{product.id}/image"/>
-						<meta property="og:description" t-att-content="product.description_sale"/>
-						<!--  Twitter sharing data -->
-						<meta name="twitter:card" content="summary_large_image"/>
-						<meta name="twitter:site" t-attf-content="@#{res_company.name}"/>
-						<meta name="twitter:title" t-att-content="product.name"/>
-						<meta name="twitter:description" t-att-content="product.description_sale"/>
-						<meta name="twitter:image" t-attf-content="#{request.httprequest.url_root}web/image/product.template/#{product.id}/image"/>
-					</t>
-				</div>
-			</t>
-		
-		</xpath>
-	</template>	
-		
-    </data>
+	
 </odoo>
